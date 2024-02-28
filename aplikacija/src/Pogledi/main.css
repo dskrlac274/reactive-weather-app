@@ -1,0 +1,33 @@
+/* Sadrzaj ove datoteke zajednicki je svim stranicama, u ovom ili onom obliku */
+
+/* predstavlja temeljni okvir koji povezuje sve elementa na stranicama*/
+.glavni-prozor {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 200px auto;
+}
+
+/* predstavlja bocnu navigaciju svih stranica */
+.bocna-navigacija {
+    grid-column: 1;
+}
+
+/* predstavlja okvir u kojem se nalaze zaglavlje i sadrzaj stranice */
+.glavni-okvir {
+    grid-column: 2;
+    min-width: 100%;
+    display: grid;
+    grid-template-rows: 50px auto 50px;
+}
+
+/* predstavlja zaglavlje na svakoj stranici */
+.zaglavlje {
+    grid-row: 1;
+    height: 50px;
+}
+
+/* predstavlja podnozje na svakoj stranici */
+.podnozje {
+    grid-row: 3;
+    height: 50px;
+}

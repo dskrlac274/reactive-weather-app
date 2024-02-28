@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Unauthorized Access</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #e74c3c;
+        }
+
+        p {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .warning-icon {
+            font-size: 72px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <i class="fas fa-exclamation-circle warning-icon"></i>
+        <h1>Neovlašten pristup</h1>
+        <p>Nemate pravo pristupa.</p>
+        <a href="http://localhost:3000/" class="back-link">Vrati se na početnu stranicu</a>
+    </div>
+</body>
+
+</html>

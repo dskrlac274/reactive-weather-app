@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Uspješna aktivacija računa</title>
+    <script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 100px auto;
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4b86fa;
+        }
+
+        p {
+            color: #333333;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: #4b86fa;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            rxjs.fromEvent(document.getElementById("idi-pocetna"), 'click').pipe(
+                rxjs.tap(() => {
+                    window.location.href = "http://localhost:3000/"
+                })
+            ).subscribe()
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Korisnički račun je uspješno aktiviran!</h1>
+        <p>Sada se možete prijaviti.</p>
+        <a id="idi-pocetna">Povratak na Početnu stranicu</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Registracija</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.1/socket.io.js"></script>
+
+    <script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"></script>
+
+    <link rel="stylesheet" href="staticno/main.css">
+    <link rel="stylesheet" href="staticno/Okviri/bocnaNavigacija.css">
+    <script src="staticno/Registracija/registracija.js"></script>
+    <script src="staticno/Okviri/bocnaNavigacija.js"></script>
+
+</head>
+
+<body>
+    <div class="glavni-prozor">
+        {{Bocna navigacija}}
+
+        <div class="glavni-okvir">
+            {{Zaglavlje}}
+            <form>
+                <div class="form-row"
+                    style="display: flex;justify-content: center;align-items: center;height: 100%;flex-direction: column;">
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServerName">Ime</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="validationServerName" placeholder="Ime"
+                                aria-describedby="inputGroupPrepend3" required>
+                            <div class="invalid-feedback" id="ime-greska" hidden>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServerSurname">Prezime</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="validationServerSurname" placeholder="Prezime"
+                                aria-describedby="inputGroupPrepend3" required>
+                            <div class="invalid-feedback" id="prezime-greska" hidden>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServerUsername">Korisničko ime</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="validationServerUsername"
+                                placeholder="Korisničko ime" aria-describedby="inputGroupPrepend3" required>
+                            <div class="invalid-feedback" id="korime-greska" hidden>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServerPassword">Lozinka</label>
+                        <input type="password" class="form-control" id="validationServerPassword" placeholder="Lozinka"
+                            required>
+                        <div class="invalid-feedback" id="lozinka-greska" hidden>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServerEmail">Email adresa</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="validationServerEmail"
+                                placeholder="Email adresa" aria-describedby="inputGroupPrepend3" required>
+                            <div class="invalid-feedback" id="email-greska" hidden>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServerAddress">Adresa</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="validationServerAddress" placeholder="Adresa"
+                                aria-describedby="inputGroupPrepend3" required>
+                            <div class="invalid-feedback" id="adresa-greska" hidden>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="button" id="registriraj-se"
+                        style="margin-top: 50px;">Registriraj se</button>
+
+                    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="prikaziAktivaciju"
+                        tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Aktivacija računa</h5>
+                                </div>
+                                <div class="modal-body">
+
+                                    <p id="obavijest-radnja-aktivacija" hidden></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="ok-gumb-aktivacija" type="button" class="btn btn-primary"
+                                        data-bs-dismiss="modal" disabled>OK!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            {{Podnozje}}
+        </div>
+    </div>
+</body>
+
+</html>

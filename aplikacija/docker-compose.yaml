@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: 'mongo'
+    environment:
+      - 'MONGO_INITDB_ROOT_USERNAME=root'
+      - 'MONGO_INITDB_ROOT_PASSWORD=password'
+    volumes:
+      - data-mongo:/data/db
+  mysqldb:
+    image: 'mysql'
+    environment:
+      - 'MYSQL_DATABASE=zavrsni'
+      - 'MYSQL_ROOT_PASSWORD=password'
+    volumes:
+      - data-mysql:/var/lib/mysql
+  backend:
+    build: ./
+    ports:
+      - '3000:3000'
+      - '3001:3001'
+    stdin_open: true
+    tty: true
+    depends_on:
+      - mysqldb
+      - mongodb
+    volumes: 
+    - ./:/app
+    - /app/node_modules
+
+volumes:
+  data-mongo:
+  data-mysql:

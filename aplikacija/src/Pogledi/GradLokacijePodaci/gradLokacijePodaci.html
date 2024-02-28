@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Grad podaci</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.1/socket.io.js"></script>
+
+    <script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"></script>
+
+    <script src="staticno/gradLokacijePodaci/gradLokacijePodaci.js"></script>
+    <script src="staticno/Okviri/bocnaNavigacija.js"></script>
+    <link rel="stylesheet" href="staticno/main.css">
+    <link rel="stylesheet" href="staticno/GradLokacijePodaci/gradLokacijePodaci.css">
+    <link rel="stylesheet" href="staticno/Okviri/bocnaNavigacija.css">
+
+</head>
+
+<body>
+    <div class="glavni-prozor">
+        {{Bocna navigacija}}
+
+        <div class="glavni-okvir">
+            {{Zaglavlje}}
+
+            <div class="grad-lokacije-podaci-sadrzaj">
+                <div style="grid-row: 1;grid-column: 1/4; display: grid; grid-template-rows: 70% 30%;">
+                    <div
+                        style="grid-row: 1;background-color: white; display: grid; grid-template-columns: 200px 500px auto 500px 180px;">
+                        <div
+                            style="grid-column: 2;display: grid;grid-template-rows: 28% 56% 16%;font-family: cursive;font-size: 17px;">
+                            <p style="grid-row: 1;text-align: center;">Zadnje mjerenje:</p>
+                            <div
+                                style="grid-row: 2;display: flex;flex-direction: row;gap: 80px;justify-content: center;">
+                                <div style="width: 90px;display: grid; grid-template-rows: 10px 58px 20px;">
+                                    <div
+                                        style="grid-row: 1; background-color: #0d6efd;border: 2px solid;border-top-right-radius: 10px;border-top-left-radius: 10px;">
+                                    </div>
+                                    <div
+                                        style="grid-row: 2; display: flex;font-family: cursive;justify-content: center;background-color: #91caed;align-items: center;padding-top: 20px;border-left: 2px solid;border-right: 2px solid;">
+                                        <div class="spinner-border spinner-stanja" role="status"
+                                            style="display: flex;justify-content: center;align-items: center;">
+                                        </div>
+                                        <p id="temperatura-trenutno" class="stanje-rezultat"
+                                            style="font-size: 20px;text-align: center;">
+                                        </p>
+                                    </div>
+                                    <p
+                                        style="grid-row: 3; font-size: 12px;font-family: cursive;font-family: cursive;background-color: #91caed;text-align: center;height: fit-content;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom: 2px solid;border-left: 2px solid;border-right: 2px solid;">
+                                        Temperatura</p>
+                                </div>
+
+                                <div style="width: 90px;display: grid; grid-template-rows: 10px 58px 20px;">
+                                    <div
+                                        style="grid-row: 1; background-color: #0d6efd;border: 2px solid;border-top-right-radius: 10px;border-top-left-radius: 10px;">
+                                    </div>
+                                    <div
+                                        style="grid-row: 2; display: flex;font-family: cursive;justify-content: center;align-items: center;background-color: #91caed;padding-top: 20px;    border-left: 2px solid;border-right: 2px solid;">
+                                        <div class="spinner-border spinner-stanja" role="status"
+                                            style="display: flex;justify-content: center;align-items: center;">
+                                        </div>
+                                        <p id="tlak-trenutno" class="stanje-rezultat"
+                                            style="font-size: 20px;text-align: center;"></p>
+                                    </div>
+                                    <p
+                                        style="grid-row: 3; font-size: 12px;font-family: cursive;font-family: cursive;text-align: center;background-color: #91caed;height: fit-content;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom: 2px solid;border-left: 2px solid;border-right: 2px solid;">
+                                        Tlak</p>
+                                </div>
+
+                                <div style="width: 90px;display: grid; grid-template-rows: 10px 58px 20px;">
+                                    <div
+                                        style="grid-row: 1; background-color: #0d6efd;border: 2px solid;border-top-right-radius: 10px;border-top-left-radius: 10px;">
+                                    </div>
+                                    <div
+                                        style="grid-row: 2; display: flex;font-family: cursive;justify-content: center;align-items: center;background-color: #91caed;padding-top: 20px;    border-left: 2px solid;border-right: 2px solid;">
+                                        <div class="spinner-border spinner-stanja" role="status"
+                                            style="display: flex;justify-content: center;align-items: center;">
+                                        </div>
+                                        <p id="vlaga-trenutno" class="stanje-rezultat"
+                                            style="font-size: 20px;text-align: center;"></p>
+                                    </div>
+                                    <p
+                                        style="grid-row: 3; font-size: 12px;font-family: cursive;font-family: cursive;text-align: center;background-color: #91caed;height: fit-content;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom: 2px solid;border-left: 2px solid;border-right: 2px solid;">
+                                        Vlaga</p>
+                                </div>
+                            </div>
+                            <div id="zadnje-lokacija" style="grid-row: 3;text-align:center;display: flex;justify-content: center;align-items: center;"></div>
+                        </div>
+                        <div
+                            style="grid-column: 4;display: grid;grid-template-rows: 28% 58% 14%;font-family: cursive;font-size: 17px;">
+                            <p style="grid-row: 1;text-align: center;">Najveća mjerenja:</p>
+                            <div
+                                style="grid-row: 2;display: flex;flex-direction: row;gap: 80px;justify-content: center;">
+                                <div style="width: 90px;display: grid; grid-template-rows: 10px 58px 20px;">
+                                    <div
+                                        style="grid-row: 1; background-color: #0d6efd;border: 2px solid;border-top-right-radius: 10px;border-top-left-radius: 10px;">
+                                    </div>
+                                    <div
+                                        style="grid-row: 2; display: flex;font-family: cursive;justify-content: center;align-items: center;background-color: #91caed;padding-top: 20px;    border-left: 2px solid;border-right: 2px solid;">
+                                        <div class="spinner-border spinner-stanja" role="status"
+                                            style="display: flex;justify-content: center;align-items: center;">
+                                        </div>
+                                        <p id="temperatura-najvece" class="stanje-rezultat"
+                                            style="font-size: 20px;text-align: center;">
+                                        </p>
+                                    </div>
+                                    <p
+                                        style="grid-row: 3; font-size: 12px;font-family: cursive;font-family: cursive;text-align: center;background-color: #91caed;height: fit-content;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom: 2px solid;border-left: 2px solid;border-right: 2px solid;">
+                                        Temperatura</p>
+                                    <div id="najvece-temperatura" style="text-align: center;"></div>
+                                </div>
+
+                                <div style="width: 90px;display: grid; grid-template-rows: 10px 58px 20px;">
+                                    <div
+                                        style="grid-row: 1; background-color: #0d6efd;border: 2px solid;border-top-right-radius: 10px;border-top-left-radius: 10px;">
+                                    </div>
+                                    <div
+                                        style="grid-row: 2; display: flex;font-family: cursive;justify-content: center;align-items: center;background-color: #91caed;padding-top: 20px;    border-left: 2px solid;border-right: 2px solid;">
+                                        <div class="spinner-border spinner-stanja" role="status"
+                                            style="display: flex;justify-content: center;align-items: center;">
+                                        </div>
+                                        <p id="tlak-najvece" class="stanje-rezultat"
+                                            style="font-size: 20px;text-align: center;"></p>
+                                    </div>
+                                    <p
+                                        style="grid-row: 3; font-size: 12px;font-family: cursive;font-family: cursive;text-align: center;background-color: #91caed;height: fit-content;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom: 2px solid;border-left: 2px solid;border-right: 2px solid;">
+                                        Tlak</p>
+                                    <div id="najvece-tlak" style="text-align: center;"></div>
+                                </div>
+
+                                <div style="width: 90px;display: grid; grid-template-rows: 10px 58px 20px;">
+                                    <div
+                                        style="grid-row: 1; background-color: #0d6efd;border: 2px solid;border-top-right-radius: 10px;border-top-left-radius: 10px;">
+                                    </div>
+                                    <div
+                                        style="grid-row: 2; display: flex;font-family: cursive;justify-content: center;align-items: center;background-color: #91caed;padding-top: 20px;    border-left: 2px solid;border-right: 2px solid;">
+                                        <div class="spinner-border spinner-stanja" role="status"
+                                            style="display: flex;justify-content: center;align-items: center;">
+                                        </div>
+                                        <p id="vlaga-najvece" class="stanje-rezultat"
+                                            style="font-size: 20px;text-align: center;"></p>
+                                    </div>
+                                    <p
+                                        style="grid-row: 3; font-size: 12px;font-family: cursive;font-family: cursive;text-align: center;background-color: #91caed;height: fit-content;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom: 2px solid;border-left: 2px solid;border-right: 2px solid;">
+                                        Vlaga</p>
+                                    <div id="najvece-vlaga" style="text-align: center;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="grid-row: 2;">
+                        <div
+                            style="display: grid; grid-template-columns: 30% 15% 40%;;height: 100%;background-color: #3b8aff;border-radius: 8px;border: 1px solid;margin-left: 5px;margin-right: 5px;">
+                            <div class="dropdown"
+                                style="grid-column: 1;display: flex;align-items: center;justify-content: center;">
+                                <button class="btn btn-primary dropdown-toggle" type="button"
+                                    id="grad-lokacije-dropdown-gumb" data-bs-toggle="dropdown"
+                                    aria-expanded="false">Grad
+                                    Lokacije</button>
+                                <ul id="foi-lokacije-dropdown-lista-popis" class="dropdown-menu dropdown-ogranicenje"
+                                    aria-labelledby="foi-lokacije-dropdown">
+                                </ul>
+
+                                <button id="dodaj-favorita" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-toggle="modal" data-bs-target="#dodajFavoritaModal"
+                                    style="margin-left: 20px;">Dodaj favorita</button>
+
+                                <button id="obrisi-favorita" type="button" class="btn btn-danger"
+                                    data-bs-toggle="modal" data-toggle="modal" data-bs-target="#obrisiFavoritaModal"
+                                    style="margin-left: 20px;">Obriši favorita</button>
+
+
+                                <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+                                    id="dodajFavoritaModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Dodaj favorita</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <select id="select-favoriti" class="form-select"
+                                                        aria-label="Default select example">
+                                                        <option value="default" selected>
+                                                            Odaberite
+                                                            favorita</option>
+                                                    </select>
+                                                </form>
+                                                <div id="spinner-favoriti" class="spinner-border" role="status"
+                                                    style="margin-left: auto;margin-right: auto;display: flex;" hidden>
+                                                </div>
+                                                <p id="obavijest-favoriti" hidden></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button id="odustani-gumb-favoriti" type="button"
+                                                    class="btn btn-secondary" data-bs-dismiss="modal">Odustani</button>
+                                                <button id="dodaj-favorita-gumb" type="button"
+                                                    class="btn btn-primary">Dodaj</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+                                    id="obrisiFavoritaModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabelObrisi">Obriši favorita</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <select id="select-favoriti-brisanje" class="form-select"
+                                                        aria-label="Default select example">
+                                                        <option value="default" selected>
+                                                            Odaberite
+                                                            favorita</option>
+                                                    </select>
+                                                </form>
+                                                <div id="spinner-favoriti-brisanje" class="spinner-border" role="status"
+                                                    style="margin-left: auto;margin-right: auto;display: flex;" hidden>
+                                                </div>
+                                                <p id="obavijest-favoriti-brisanje" hidden></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button id="odustani-gumb-favoriti-brisanje" type="button"
+                                                    class="btn btn-secondary" data-bs-dismiss="modal">Odustani</button>
+                                                <button id="obrisi-favorita-gumb" type="button"
+                                                    class="btn btn-danger">Obriši</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="grid-column: 3;display: flex;align-items: center;">
+                                <select id="select-postavke-prikaza"
+                                    style="width: 150px;height: 38px;margin-right: 40px;" class="form-select"
+                                    aria-label="Default select example">
+                                    <option class="dropdown-ogranicenje" value="1" selected>Svi gradovi</option>
+                                    <option class="dropdown-ogranicenje" value="2">Moji favoriti</option>
+                                </select>
+
+                                <select id="select-prikaz-mjerenja" style="width: 200px;height: 38px;"
+                                    class="form-select" aria-label="Default select example">
+                                    <option class="dropdown-ogranicenje" selected>Temperatura</option>
+                                    <option class="dropdown-ogranicenje">Tlak</option>
+                                    <option class="dropdown-ogranicenje">Vlaga</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="grid-row: 2;grid-column: 1/2;">
+
+                    <div class="graf">
+                        <canvas id="graf"></canvas>
+                    </div>
+                </div>
+                <div id="parent-stranicenje"
+                    style="grid-row: 2;grid-column: 2/4;background-color: white;display: grid;row-gap: 5px;grid-template-rows: 40px 0px auto auto auto auto auto auto;border: 3px solid #0d6efd;border-radius: 10px;margin-top: 5px;padding-bottom: 10px;">
+                    <p id="stranicenje-naslov"
+                        style="font-family: cursive;grid-row: 1;height: 1px;font-size: 25px;display: flex;justify-content: center;">
+                        Prognoza vremena</p>
+                </div>
+
+                <div
+                    style="grid-row: 3;grid-column: 1/4;background-color: white;display: grid;grid-template-columns: 45% 28% 37%;">
+                    <div style="grid-column: 1;display: flex;align-items: center;gap: 5px;margin-left: 60px;">
+                        <button id="filtriraj-sat" class="btn btn-primary" type="submit" disabled>Po satu u danu</button>
+                        <button id="filtriraj-dan" class="btn btn-primary" type="submit">Po danu u mjesecu</button>
+                        <button id="filtriraj-mjesec" class="btn btn-primary" type="submit">Po mjesecu u godini</button>
+                        <button id="filtriraj-godina" class="btn btn-primary" type="submit">Po godinama</button>
+                    </div>
+                    <div style="grid-column: 2;display: flex;align-items: center;">
+                        <input type="date" name="dateofbirth" id="filtriraj-datum" class="input-date"
+                            style="background-color: #0d6efd;color: white;width: 125px;height: 38px;border: 0px;">
+                    </div>
+
+                </div>
+            </div>
+            {{Podnozje}}
+        </div>
+    </div>
+</body>
+
+</html>

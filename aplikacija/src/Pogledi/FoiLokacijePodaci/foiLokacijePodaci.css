@@ -1,0 +1,75 @@
+.foi-lokacije-podaci-sadrzaj {
+    grid-row: 2;
+    display: grid;
+    grid-template-rows: 225px auto 50px;
+    grid-template-columns: 1200px 400px;
+}
+
+.graf {
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: 20px;
+}
+
+.dropdown-ogranicenje {
+    max-height: 250px;
+    max-width: 150px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+body {
+    overflow-y: hidden;
+}
+
+.pozicioniraj-elemente-vodoravno {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+[type="date"] {
+    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+.input-date {
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 3px 5px;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+    width: 190px;
+}
+
+.parent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.parent button {
+    background-color: #48abe0;
+    color: white;
+    border: none;
+    font-size: 27px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.parent button:active {
+    background-color: #48abe0;
+    box-shadow: 0 0 2px darkslategray;
+    transform: translateY(2px);
+}
+
+.round-6 {
+    border-radius: 70%;
+}

@@ -1,0 +1,173 @@
+<div style="grid-column: 2;display: flex;align-items: center;gap: 5px;">
+    <button id="dodaj-lokaciju" type="button" class="btn btn-primary" data-bs-toggle="modal"
+        data-toggle="modal" data-bs-target="#dodajLokacijuModal">Dodaj</button>
+    <button id="azuriraj-lokaciju" data-bs-toggle="modal" data-toggle="modal" type="button"
+        type="button" class="btn btn-primary"
+        data-bs-target="#azurirajLokacijuModal">Ažuriraj</button>
+    <button id="obrisi-lokaciju" data-bs-toggle="modal" data-toggle="modal" type="button"
+        class="btn btn-danger" data-bs-target="#obrisiLokacijuModal">Obriši</button>
+
+    <button id="obrisi-lokacije" data-bs-toggle="modal" data-toggle="modal" type="button"
+        class="btn btn-danger" data-bs-target="#obrisiLokacijeModal">Obriši bez
+        zapisa</button>
+</div>
+
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+    id="dodajLokacijuModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Dodaj lokaciju</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input id="naziv-nove-lokacije" type="text" class="form-control"
+                        placeholder="Naziv nove lokacije">
+                </form>
+                <div id="spinner" class="spinner-border" role="status"
+                    style="margin-left: auto;margin-right: auto;display: flex;" hidden>
+                </div>
+                <p id="obavijest-radnja" hidden></p>
+            </div>
+            <div class="modal-footer">
+                <button id="odustani-gumb" type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Odustani</button>
+                <button id="dodaj-lokaciju-gumb" type="button"
+                    class="btn btn-primary">Dodaj</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+    id="azurirajLokacijuModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ažuriraj lokaciju</h5>
+            </div>
+            <div class="modal-body">
+                <select id="select-azuriraj" class="form-select"
+                    aria-label="Default select example">
+                    <option value="default" class="dropdown-ogranicenje" selected>Odaberite
+                        lokaciju</option>
+                </select>
+                <form style="margin-top: 10px;">
+                    <input id="novi-naziv-lokacije" type="text" class="form-control"
+                        placeholder="Novi naziv lokacije">
+                </form>
+                <div id="spinner-azuriranje" class="spinner-border" role="status"
+                    style="margin-left: auto;margin-right: auto;display: flex;" hidden>
+                </div>
+                <p id="obavijest-radnja-azuriranje" hidden></p>
+            </div>
+            <div class="modal-footer">
+                <button id="odustani-gumb-azuriranje" type="button"
+                    class="btn btn-secondary" data-bs-dismiss="modal">Odustani</button>
+                <button id="azuriraj-lokaciju-gumb" type="button"
+                    class="btn btn-primary">Ažuriraj</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+    id="obrisiLokacijuModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Obriši lokaciju</h5>
+            </div>
+            <div class="modal-body">
+                <select id="select-obrisi" class="form-select"
+                    aria-label="Default select example">
+                    <option value="default" class="dropdown-ogranicenje" selected>Odaberite
+                        lokaciju</option>
+                </select>
+                <div id="spinner-brisanje" class="spinner-border" role="status"
+                    style="margin-left: auto;margin-right: auto;display: flex;" hidden>
+                </div>
+                <p id="obavijest-radnja-brisanje" hidden></p>
+            </div>
+            <div class="modal-footer">
+                <button id="odustani-gumb-brisanje" type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Odustani</button>
+                <button id="obrisi-lokaciju-gumb" type="button" class="btn btn-primary"
+                    style="background-color: rgb(247, 41, 41);">Obriši</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+    id="obrisiLokacijeModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Obriši lokaciju</h5>
+            </div>
+            <div class="modal-body">
+                <p id="biti-ce-obrisani" hidden style="word-wrap: break-word;">Navedene
+                    lokacije će biti izbrisane:</p>
+
+                <div id="spinner-brisanje-sve" class="spinner-border" role="status"
+                    style="margin-left: auto;margin-right: auto;display: flex;" hidden>
+                </div>
+                <p id="obavijest-radnja-brisanje-sve" hidden></p>
+            </div>
+            <div class="modal-footer">
+                <button id="odustani-gumb-brisanje-sve" type="button"
+                    class="btn btn-secondary" data-bs-dismiss="modal">Odustani</button>
+                <button id="obrisi-lokacije-gumb" type="button" class="btn btn-primary"
+                    style="background-color: rgb(255, 0, 0);">Obriši</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+    id="uploadDatotekeModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Učitaj podatke</h5>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <p style="font-family: cursive">Primjer validnog oblika u JSON formatu
+                        --> upload CSV datoteke:
+                    </p>
+                    <code>
+                        {
+                            "lokacija": "watss_1",
+                            "vrijemeMjerenja": "10.2.2022. 16:35:00",
+                            "temperatura": "30.9",
+                            "vlaga": "98.9",
+                            "tlak": "1.6"
+                        }
+                    </code>
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <input class="form-control" type="file" id="formFile">
+                    </form>
+                </div>
+
+                <div id="spinner-upload" class="spinner-border" role="status"
+                    style="margin-left: auto;margin-right: auto;display: flex;" hidden>
+                </div>
+                <p id="upload-datoteke-poruka" hidden></p>
+            </div>
+            <div class="modal-footer">
+                <button id="odustani-gumb-upload" type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Odustani</button>
+                <button id="ucitaj-lokacije-gumb" type="button"
+                    class="btn btn-primary">Učitaj</button>
+            </div>
+        </div>
+    </div>
+</div>

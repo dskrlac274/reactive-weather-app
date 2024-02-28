@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "assets": [
+      {
+        "include": "./Predlosci",
+        "outDir": "dist/",
+        "watchAssets": true
+      },
+      {
+        "include": "./Pogledi/**",
+        "outDir": "dist/",
+        "watchAssets": true
+      },
+      {
+        "include": "./Konfiguracija/**",
+        "outDir": "dist/",
+        "watchAssets": true
+      }
+    ],
+    "watchAssets": true
+  }
+}

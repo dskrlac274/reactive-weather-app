@@ -1,0 +1,9 @@
+.nav-link {
+    color: white !important;
+}
+
+a.nav-link {
+    border: 1px solid;
+    border-radius: 7px;
+    margin-bottom: 5px;
+}
